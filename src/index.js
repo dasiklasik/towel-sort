@@ -1,25 +1,19 @@
-// You should implement your task here.
-
 module.exports = function towelSort(matrix) {
     if (matrix === undefined || matrix.length === 0) {
         return [];
     }
 
-    let res = [];
-    let partRes = [];
-    let part = [];
-    let counter = 0;
+    const res = []
 
-    for (let i = 0; i < matrix.length; i++) {
-        if (counter === 0) {
-            part = matrix[i];
-            res = res.concat(part);
-            counter++;
-        } else if (counter === 1) {
-            part = matrix[i].reverse();
-            res = res.concat(part);
-            counter = 0;
+    for(let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+            if(i%2 === 0) {
+                res.push(matrix[i][j])
+            } else {
+                res.push(matrix[i][matrix[i].length - 1 - j])
+            }
         }
     }
-    return res;
+
+    return res
 }
